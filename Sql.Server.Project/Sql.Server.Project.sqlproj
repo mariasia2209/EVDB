@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Sql.Server.Project</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{13695ead-7865-448c-920a-ae8327f7bdcb}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Sql.Server.Project</RootNamespace>
+    <AssemblyName>Sql.Server.Project</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <PermissionSet>EXTERNAL_ACCESS</PermissionSet>
+    <GenerateCreateScript>False</GenerateCreateScript>
+    <TargetDatabase>Sql.Server.Project</TargetDatabase>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="PostDeploymentScripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Comments.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\Events.sql" />
+    <Build Include="dbo\Tables\Likes.sql" />
+    <Build Include="dbo\Tables\Reposts.sql" />
+    <Build Include="dbo\Tables\Streams.sql" />
+    <Build Include="dbo\Tables\Groups.sql" />
+    <Build Include="dbo\Tables\Subscriptions.sql" />
+    <Build Include="dbo\Tables\Messages.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\EventSubscriptions.sql" />
+    <Build Include="dbo\Tables\UserGroups.sql" />
+    <Build Include="dbo\Tables\UserRoles.sql" />
+    <Build Include="dbo\Tables\Logins.sql" />
+    <Build Include="dbo\Tables\Claims.sql" />
+    <Build Include="dbo\Tables\Tags.sql" />
+    <Build Include="dbo\Tables\EventTags.sql" />
+    <Build Include="dbo\Tables\Notifications.sql" />
+    <Build Include="dbo\Tables\Categories.sql" />
+    <Build Include="dbo\Tables\Organizers.sql" />
+    <Build Include="dbo\Tables\News.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sql.Server.Project.publish.xml" />
+    <None Include="PostDeploymentScripts\Categories_Populate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploymentScripts\Users_Populate.sql" />
+    <PostDeploy Include="PostDeploymentScripts\Script.PostDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploymentScripts\Comments_Populate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploymentScripts\Events_Populate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploymentScripts\EventsSubscriptions_Populate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploymentScripts\Likes_Populate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploymentScripts\Groups_Populate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploymentScripts\UserGroups_Populate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploymentScripts\News_Populate.sql" />
+  </ItemGroup>
+</Project>
